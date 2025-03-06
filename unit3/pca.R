@@ -2,29 +2,29 @@ draw_axes <- function(datax, datay) {
     max_x <- max(abs(datax))
     max_y <- max(abs(datay))
     print(length(datay))
-    
+
     plot(NA, xlim = c(-max_x, max_x), ylim = c(-max_y, max_y), axes = F, ann = F)
-    
+
     # Draw axes with arrows
-    arrows(-max_x, 0, max_x, 0, col = "#000", length = 0.1, lwd = 2)  # X-axis
-    arrows(0, -max_y, 0, max_y, col = "#000", length = 0.1, lwd = 2)  # Y-axis
-    
+    arrows(-max_x, 0, max_x, 0, col = "#000", length = 0.1, lwd = 2) # X-axis
+    arrows(0, -max_y, 0, max_y, col = "#000", length = 0.1, lwd = 2) # Y-axis
+
     # Add points
     points(datax, datay, col = "blue", pch = 16, cex = 2)
-    
+
     # Generate axis labels at even intervals
     x_ticks <- seq(-max_x, max_x, length.out = 5)
     y_ticks <- seq(-max_y, max_y, length.out = 5)
-    
+
     # Remove 0 from labels to avoid overlap at origin
     x_ticks <- x_ticks[x_ticks != 0]
     y_ticks <- y_ticks[y_ticks != 0]
-    
+
     # Add labels to X-axis
-    text(x_ticks, rep(0, length(x_ticks)), labels = x_ticks, pos = 3, cex = 1.2)  # pos = 3 means above
+    text(x_ticks, rep(0, length(x_ticks)), labels = x_ticks, pos = 3, cex = 1.2) # pos = 3 means above
 
     # Add labels to Y-axis
-    text(rep(0, length(y_ticks)), y_ticks, labels = y_ticks, pos = 4, cex = 1.2)  # pos = 4 means right
+    text(rep(0, length(y_ticks)), y_ticks, labels = y_ticks, pos = 4, cex = 1.2) # pos = 4 means right
 }
 pca <- function(data, n_components) {
     # Step 1: Standardize the Data
